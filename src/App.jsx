@@ -17,9 +17,10 @@ import PageNotFound from './pages/PageNotFound';
 
 import AppLayout from './ui/AppLayout';
 
-import ProtectedRoute from './features/authentication/ProtectedRouter';
+import ProtectedRoute from './features/authentication/ProtectedRoute';
 
 import { DarkModeProvider } from './contexts/DarkModeContext';
+import { PublicRoute } from './features/authentication/PublicRoute';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -57,7 +58,15 @@ function App() {
               <Route path="account" element={<Account />} />
             </Route>
 
-            <Route path="login" element={<Login />} />
+            <Route
+              path="login"
+              element={
+                <PublicRoute>
+                  <Login />
+                </PublicRoute>
+              }
+            />
+
             <Route path="*" element={<PageNotFound />} />
           </Routes>
         </BrowserRouter>

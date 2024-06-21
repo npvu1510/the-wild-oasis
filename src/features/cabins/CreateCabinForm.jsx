@@ -20,7 +20,7 @@ function CreateCabinForm({ cabinToEdit = {}, onClose }) {
 
   const { id: editId, ...editValues } = cabinToEdit;
   const isEditSession = Boolean(editId);
-  console.log(isEditSession);
+  // console.log(isEditSession);
 
   const { register, handleSubmit, reset, getValues, formState } = useForm({
     defaultValues: isEditSession ? editValues : {},
@@ -59,7 +59,10 @@ function CreateCabinForm({ cabinToEdit = {}, onClose }) {
     // console.log(data);
   };
 
-  if (isLoading) return <Spinner></Spinner>;
+  if (isLoading) {
+    onClose();
+    return null;
+  }
 
   return (
     <Form

@@ -12,7 +12,7 @@ function LoginForm() {
   const { mutate, isLogging } = useLogin();
 
   const [email, setEmail] = useState('admin@gmail.com');
-  const [password, setPassword] = useState('adminzzz');
+  const [password, setPassword] = useState('123');
 
   function handleSubmit(e) {
     e.preventDefault();

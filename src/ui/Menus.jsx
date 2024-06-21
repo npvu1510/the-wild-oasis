@@ -91,15 +91,10 @@ function Menu({ children }) {
 
 function Toggle({ triggerOf }) {
   const { currentMenu, open, close } = useContext(MenuContext);
-  const ref = useRef();
 
   const handleClick = function (e) {
+    // console.log(e.target);
     e.stopPropagation();
-    // console.log(
-    //   ref.current &&
-    //     opened &&
-    //     (e.target === ref.current || ref.current.contains(e.target))
-    // );
 
     const rect = e.target.closest('button').getBoundingClientRect();
 
@@ -113,7 +108,7 @@ function Toggle({ triggerOf }) {
   };
 
   return (
-    <StyledToggle onClick={handleClick} ref={ref}>
+    <StyledToggle onClick={handleClick}>
       <HiEllipsisVertical />
     </StyledToggle>
   );
@@ -137,12 +132,10 @@ function Select({ children, id }) {
 }
 
 function Option({ children, icon, onClick }) {
-  const { setOpened, close } = useContext(MenuContext);
+  const { close } = useContext(MenuContext);
 
   function handleClick() {
     onClick?.();
-    setOpened(false);
-
     close();
   }
 

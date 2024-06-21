@@ -8,7 +8,7 @@ import useSignUp from './useSignUp';
 // Email regex: /\S+@\S+\.\S+/
 
 function SignupForm() {
-  console.log('re-render signup form');
+  // console.log('re-render signup form');
   const { signup, isLoading } = useSignUp();
 
   const { register, handleSubmit, formState, getValues, reset } = useForm();

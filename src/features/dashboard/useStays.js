@@ -18,6 +18,8 @@ function useStays() {
     (stay) => stay.status !== 'unconfirmmed'
   );
 
+  console.log(stays);
+  console.log(confirmedStays);
   return { stays, confirmedStays, isLoadingStays };
 }
 

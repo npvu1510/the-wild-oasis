@@ -53,7 +53,7 @@ function CheckinBooking() {
     hasBreakfast,
     numNights,
   } = booking;
-  console.log(booking);
+  // console.log(booking);
 
   const additionalPrice = settings.breakfastPrice * numGuests * numNights;
 

@@ -3,7 +3,7 @@ import supabase from './supabase';
 import { supabaseUrl } from './supabase';
 
 export async function login(email, password) {
-  console.log('loginAPI');
+  // console.log('loginAPI');
   const { data, error } = await supabase.auth.signInWithPassword({
     email,
     password,
@@ -11,13 +11,13 @@ export async function login(email, password) {
 
   if (error) throw error;
 
-  console.log(`FROM LOGINAPI: `, data?.user);
+  // console.log(`FROM LOGINAPI: `, data?.user);
 
   return data?.user;
 }
 
 export async function getCurrentUser() {
-  console.log('getCurrentUser');
+  // console.log('getCurrentUser');
   const {
     data: { session },
   } = await supabase.auth.getSession();
@@ -31,7 +31,7 @@ export async function getCurrentUser() {
     throw error;
   }
 
-  console.log('FROM getCurrentUser', data?.user);
+  // console.log('FROM getCurrentUser', data?.user);
 
   return data?.user;
 }
@@ -69,7 +69,7 @@ export async function updateUser(fullName, avatar, password) {
       .upload(imageName, avatar);
 
     if (storageError) {
-      console.log(storageError.error);
+      // console.log(storageError.error);
       throw storageError;
     }
 

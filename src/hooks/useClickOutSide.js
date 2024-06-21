@@ -5,12 +5,12 @@ function useClickOutSide({ onClickOutside, bubble = true }) {
 
   useEffect(() => {
     const handleClick = function (e) {
+      console.log(e.target);
       if (
         ref.current &&
         ref.current !== e.target &&
         !ref.current.contains(e.target)
       ) {
-        console.log('outside');
         onClickOutside();
       }
     };

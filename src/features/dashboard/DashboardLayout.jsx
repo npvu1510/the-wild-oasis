@@ -28,6 +28,8 @@ function DashboardLayout() {
   if (isLoadingBookings || isLoadingStays || isLoadingCabins)
     return <Spinner />;
 
+  if (!cabins) return;
+
   const cabinCount = cabins.length;
   const numDays = searchParams.get('last') || 7;
 

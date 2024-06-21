@@ -4,7 +4,7 @@ import supabase from './supabase';
 import { PAGE_SIZE } from '../utils/constants';
 
 export async function getBookings({ filter, sort, page }) {
-  console.log('getBookings');
+  // console.log('getBookings');
 
   let query = supabase
     .from('bookings')
@@ -30,7 +30,7 @@ export async function getBookings({ filter, sort, page }) {
 
   if (error) throw error;
 
-  console.log('FROM getBookings', data);
+  // console.log('FROM getBookings', data);
 
   return { data, count };
 }

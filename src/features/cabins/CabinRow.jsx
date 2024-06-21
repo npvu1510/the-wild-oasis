@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 import toast from 'react-hot-toast';
 
-import { useState } from 'react';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
 import useCreateCabin from './useCreateCabin';
 import useDeleteCabin from './useDeleteCabin';
 
@@ -15,9 +13,6 @@ import Table from '../../ui/Table';
 import Menus from '../../ui/Menus';
 import { HiDuplicate, HiTrash } from 'react-icons/hi';
 import { HiPencil } from 'react-icons/hi';
-
-//
-import { deleteCabin } from '../../services/apiCabins';
 
 import { formatCurrency } from '../../utils/helpers';
 
@@ -49,7 +44,6 @@ const Discount = styled.div`
 `;
 
 function CabinRow({ cabin }) {
-  const [showEditForm, setShowEditForm] = useState(false);
   const {
     id: cabinId,
     name,
@@ -63,20 +57,19 @@ function CabinRow({ cabin }) {
   const { deleteCabin, isDeleting } = useDeleteCabin();
 
   const handleDuplicate = () => {
-    console.log(image);
     createCabin({ name, maxCapacity, regularPrice, discount, image });
   };
 
   const isWorking = isCreating || isDeleting;
 
-  if (isWorking) return;
+  if (isWorking) return null;
 
   return (
     <>
       <Table.Row>
         <Img src={image} />
         <Cabin>{name}</Cabin>
-        <div>Fits up tp {maxCapacity} guests</div>
+        <div>Fits up to {maxCapacity} guests</div>
         <Price>{formatCurrency(regularPrice)}</Price>
         <Discount>{formatCurrency(discount)}</Discount>
 

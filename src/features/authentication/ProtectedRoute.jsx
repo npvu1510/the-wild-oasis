@@ -12,8 +12,6 @@ const FullPage = styled.div`
 `;
 
 function ProtectedRoute({ children }) {
-  // console.log('PROTECTED ROUTE');
-
   const navigate = useNavigate();
   const { user, isLoading, error } = useUser();
 

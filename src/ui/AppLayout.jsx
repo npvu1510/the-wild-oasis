@@ -25,7 +25,7 @@ const Container = styled.div`
 `;
 
 function AppLayout() {
-  console.log('rerender AppLayout');
+  // console.log('rerender AppLayout');
   return (
     <StyledAppLayout>
       <Header />

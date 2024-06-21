@@ -23,5 +23,6 @@ export async function updateSetting(newSetting) {
     console.error(error);
     throw new Error('Settings could not be updated');
   }
+
   return data;
 }

@@ -31,11 +31,11 @@ import Empty from '../../ui/Empty';
 // `;
 
 function CabinTable() {
-  console.log('re-render CabinTable');
-  let { cabins, isLoading, error } = useCabin();
+  // console.log('re-render CabinTable');
+  let { cabins, isFetching, error } = useCabin();
   const [searchParams] = useSearchParams();
 
-  if (isLoading) return <Spinner></Spinner>;
+  if (isFetching) return <Spinner></Spinner>;
   if (!cabins) return <Empty resource="cabin"></Empty>;
 
   // 1. FILTER
@@ -51,9 +51,6 @@ function CabinTable() {
   let sortedCabins = filteredCabins;
   const sortValue = searchParams.get('sortBy') || '';
 
-  console.log(sortValue);
-  console.log(filteredCabins);
-
   const [sortField, direction] = sortValue.split('-');
   const modifier = direction === 'asc' ? 1 : -1;
 
@@ -64,28 +61,29 @@ function CabinTable() {
   sortedCabins = sortedCabins.sort(
     sortField === 'name' ? compareName : compareNumber
   );
-  console.log(sortedCabins);
+  // console.log(sortedCabins);
 
-  return (
-    <Menus>
-      <Table columns="0.6fr 1.8fr 2.2fr 1fr 1fr 1fr">
-        <Table.Header>
-          <div></div>
-          <div>Cabin</div>
-          <div>Capacity</div>
-          <div>Price</div>
-          <div>Discount</div>
-          <div></div>
-        </Table.Header>
-        <Table.Body
-          data={sortedCabins}
-          render={(cabin) => <CabinRow cabin={cabin} key={cabin.id} />}
-        ></Table.Body>
-        {/* {error && <p>{error.message}</p>}
-      {isLoading && <Spinner />} */}
-      </Table>
-    </Menus>
-  );
+  if (!isFetching)
+    return (
+      <Menus>
+        <Table columns="0.6fr 1.8fr 2.2fr 1fr 1fr 1fr">
+          <Table.Header>
+            <div></div>
+            <div>Cabin</div>
+            <div>Capacity</div>
+            <div>Price</div>
+            <div>Discount</div>
+            <div></div>
+          </Table.Header>
+          <Table.Body
+            data={sortedCabins}
+            render={(cabin) => <CabinRow cabin={cabin} key={cabin.id} />}
+          ></Table.Body>
+          {/* {error && <p>{error.message}</p>}
+      {isFetching && <Spinner />} */}
+        </Table>
+      </Menus>
+    );
 }
 
 export default CabinTable;

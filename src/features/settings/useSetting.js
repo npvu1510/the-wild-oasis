@@ -11,7 +11,7 @@ const useSettings = function () {
     queryFn: getSettings,
   });
 
-  console.log('FETCHING SETTINGS');
+  // console.log('FETCHING SETTINGS');
 
   return {
     settings,

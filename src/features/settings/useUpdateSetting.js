@@ -13,7 +13,7 @@ export default function useUpdateSetting() {
       queryClient.invalidateQueries({
         queryKey: ['setting'],
       });
-      console.log('SUCCESS');
+      // console.log('SUCCESS');
     },
     onError: (err) => {
       toast.error(err.message);

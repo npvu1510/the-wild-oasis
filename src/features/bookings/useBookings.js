@@ -5,7 +5,7 @@ import { getBookings } from '../../services/apiBookings';
 import { PAGE_SIZE } from '../../utils/constants';
 
 function useBookings() {
-  console.log('useBookings');
+  // console.log('useBookings');
 
   const queryClient = useQueryClient();
   const [searchParams, setSearchParams] = useSearchParams();

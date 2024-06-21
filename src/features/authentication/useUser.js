@@ -14,7 +14,7 @@ function useUser() {
     retry: false,
   });
 
-  console.log(`is useUser Loading: ${isLoading}`);
+  // console.log(`is useUser Loading: ${isLoading}`);
   return { user, isLoading, error };
 }
 
